@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
 ### 使用示例
 
-完成配置后，你可以通过 `curl` 命令发送 POST 请求，将消息转发到你的 Telegram 机器人。以下是一个示例：
+1、完成配置后，你可以通过 `curl` 命令发送 POST 请求，将消息转发到你的 Telegram 机器人。以下是一个示例：
 
 ```bash
 curl -X POST https://your_domain_or_ip/notify \
@@ -99,6 +99,29 @@ curl -X POST https://your_domain_or_ip/notify \
 ```
 
 此命令会通过 `/notify` 接口向你的 Flask 应用发送请求，并将 `{"message":"这是测试消息"}` 作为数据传递，最终会在 Telegram 上收到该消息。
+
+
+2、下面是如何使用 Bash 脚本和 Python 脚本发送变量内容作为消息的示例：
+
+### 使用 Bash 脚本发送消息
+
+你可以将消息存储在变量中，并通过 `curl` 命令发送该消息。下面是一个 Bash 脚本的例子：
+
+```bash
+#!/bin/bash
+
+# 定义变量
+MESSAGE="这是通过变量发送的消息"
+
+# 发送 POST 请求，将变量作为消息发送
+curl -X POST https://your_domain_or_ip/notify \
+-d "{\"message\":\"$MESSAGE\"}"
+```
+
+**说明**：
+- 这里 `MESSAGE` 是一个字符串变量，存储了你想发送的消息。
+- 使用 `curl` 时，通过将 `MESSAGE` 嵌入到 JSON 数据中，发送给 Flask 应用。
+- 注意：在 `-d` 选项中，`$MESSAGE` 被双引号括住，以防止特殊字符破坏 JSON 格式。
 
 ### 小结
 
