@@ -93,9 +93,7 @@ if __name__ == '__main__':
 1、完成配置后，你可以通过 `curl` 命令发送 POST 请求，将消息转发到你的 Telegram 机器人。以下是一个示例：
 
 ```bash
-curl -X POST https://your_domain_or_ip/notify \
--H "Content-Type: application/json" \
--d '{"message":"这是测试消息"}'
+curl -X POST http://your_domain_or_ip:3003/notify -H "Content-Type: application/json" -d '{"message":"这是测试消息"}'
 ```
 
 此命令会通过 `/notify` 接口向你的 Flask 应用发送请求，并将 `{"message":"这是测试消息"}` 作为数据传递，最终会在 Telegram 上收到该消息。
@@ -114,7 +112,7 @@ curl -X POST https://your_domain_or_ip/notify \
 MESSAGE="这是通过变量发送的消息"
 
 # 发送 POST 请求，将变量作为消息发送
-curl -X POST https://your_domain_or_ip/notify \
+curl -X POST http://your_domain_or_ip:3003/notify \
 -d "{\"message\":\"$MESSAGE\"}"
 ```
 
