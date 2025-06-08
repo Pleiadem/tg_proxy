@@ -96,6 +96,11 @@ if __name__ == '__main__':
 curl -X POST http://your_domain_or_ip:3003/notify -H "Content-Type: application/json" -d '{"message":"这是测试消息"}'
 ```
 
+windows cmd 
+```cmd
+curl -X POST your_domain_or_ip:3003/notify -H "Content-Type: application/json" -d "{\"message\":\"这是测试消息\"}"
+```
+
 此命令会通过 `/notify` 接口向你的 Flask 应用发送请求，并将 `{"message":"这是测试消息"}` 作为数据传递，最终会在 Telegram 上收到该消息。
 
 
